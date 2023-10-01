@@ -1,0 +1,74 @@
+.body {
+    display: flex;
+    width: 100vw;
+    justify-content: space-around;
+    h1 {
+        font-size: 50px;
+    }
+}
+#productos {
+    margin: 0%;
+    display: grid;
+    text-align: center;
+    width: 100%;
+    height: auto; 
+	grid-template-columns: repeat(auto-fill, minmax(420px, auto));
+	grid-auto-rows: auto; 
+	padding-top: 5%;
+	padding-bottom: 5%;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    border-bottom: #da8a0d solid 10px;
+    border-top: #da8a0d solid 10px;
+    background-image: url(https://res.cloudinary.com/dsdicaf5h/image/upload/v1679338143/cenicero/fondo-min_mvyopj.png);
+    gap: 8vw;
+    background-size: 100%;
+    padding-left:4rem ;
+    padding-right:4rem ;
+    margin-bottom: 10%;
+    margin-top: 10%;
+    justify-items: center;
+    a{
+        div{
+            align-items: center;
+            #img2 {
+                width: 100px;
+                position: relative;
+                top: -50px;
+                border-radius: 20%;
+            }
+        }
+    }
+}
+#img2:hover{
+    transform: scale(2);
+}
+@media screen and (max-width: 767px){
+    #productos{
+        a{
+            width: 90vw;
+        }
+    }
+}
+
+.container-fluid-hidden {
+    display: none;
+}
+
+.container-fluid {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    flex-direction: column;
+    align-items: center;
+    .spinner{
+        width: 50vw;
+        height: 50vw;
+    }
+}
+
+#dropDown{
+    inset: 0px;
+}

@@ -1,0 +1,144 @@
+.cenic {
+  font-size: 15px;
+  z-index: 100;
+  position: relative;
+  text-align: center;
+  text-shadow: 0px -1px rgb(0, 0, 0);
+  color: aliceblue;
+}
+
+#container-fluid {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+header {
+  border-bottom: #da8a0d 10px solid;
+  background-image: url(https://res.cloudinary.com/dsdicaf5h/image/upload/v1679338143/cenicero/fondo-min_mvyopj.png);
+  background-size: 100%;
+  text-align: start;
+  width: 100%;
+  margin-bottom: 100px;
+}
+
+#header {
+  width: 100%;
+  border-bottom: #da8a0d solid 10px;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  display: flex;
+  flex-direction: column;
+}
+#header #menu {
+  border: 2px solid #f1f1f1;
+  border-radius: 10px;
+  vertical-align: middle;
+  display: flex;
+  background-color: #da8a0d;
+  color: whitesmoke;
+  align-items: center;
+}
+#header #menu ul li a {
+  text-shadow: 0px 2px 1px rgb(0, 0, 0);
+  color: white;
+}
+#header .divButtons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  left: 7%;
+  position: relative;
+}
+#header .divButtons #buttonC {
+  border: 2px solid #f1f1f1;
+  border-radius: 10px;
+  transition: all 0.4s ease-in-out;
+  background-color: #da8a0d;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  top: 50vh;
+  right: 10px;
+}
+#header .divButtons #buttonC .imgBoton {
+  width: 50px;
+}
+#header .divButtons div {
+  position: relative;
+  right: 8px;
+}
+#header .divButtons div #numCarro {
+  position: absolute;
+  color: #f1f1f1;
+  border: 2px solid #f1f1f1;
+  border-radius: 10px;
+  background-color: #da8a0d;
+  padding: 5px 5px;
+  text-shadow: 0px 2px 1px rgb(0, 0, 0);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+#header #imgLogo {
+  width: 150px;
+  position: relative;
+  top: 20px;
+  padding-bottom: 40px;
+  display: flex;
+  margin: 0%;
+}
+
+#buttonC:hover {
+  transform: scale(1.2);
+}
+
+.buttons a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 35px;
+  position: fixed;
+  z-index: 999;
+  right: 2%;
+  border: 2px solid #f1f1f1;
+  top: 17%;
+  width: 60px;
+  text-shadow: 0px 2px 1px rgb(0, 0, 0);
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  background: #da8a0d;
+  color: #f1f1f1;
+  border-radius: 50%;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease-in-out;
+}
+
+.buttons a:hover {
+  transform: scale(1.2);
+  color: white;
+}
+
+#footer {
+  align-items: center;
+  width: 100%;
+  background-image: url(https://res.cloudinary.com/dsdicaf5h/image/upload/v1679338143/cenicero/fondo-min_mvyopj.png);
+  background-size: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-top: #da8a0d solid 10px;
+}
+
+@media screen and (max-width: 500px) {
+  #header .divButtons {
+    left: 0%;
+  }
+}
+@media screen and (max-width: 365px) {
+  #header .divButtons {
+    left: -2%;
+  }
+  #header .divButtons div {
+    right: 20px;
+  }
+}/*# sourceMappingURL=Header&Footer.css.map */

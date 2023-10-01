@@ -1,0 +1,41 @@
+#detalleProducto{
+    background-image: url(https://res.cloudinary.com/dsdicaf5h/image/upload/v1679338143/cenicero/fondo-min_mvyopj.png);
+    background-size: 100%;
+    padding-left:4rem ;
+    padding-right:4rem ;
+    margin-bottom: 10%;
+    margin-top: 10%;
+    border-bottom: #da8a0d solid 10px;
+    border-top: #da8a0d solid 10px;
+    padding-top: 5%;
+	padding-bottom: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    #carousel{
+        width: 700px;
+        margin-right: 10%;
+    }
+}
+@media screen and (max-width: 1024px){
+    #detalleProducto{
+        flex-direction: column;
+        #carousel{
+            width: auto;
+            margin-right: 0%;
+        }
+    }
+}
+@media screen and (max-width: 524px){
+    #detalleProducto{
+        flex-direction: column;
+        #carousel{
+            width: 90vw;
+            margin-right: 0%;
+        }
+        #cardDetalles{
+            width: 90vw;
+        }
+    }
+}
