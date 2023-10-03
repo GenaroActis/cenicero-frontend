@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ProductContext } from '../../context/ProductContext';
 import Spinner from 'react-bootstrap/Spinner';
 import { AdminContext } from '../../context/AdminContext';
-
+import Carousel from 'react-bootstrap/Carousel';
 const ProductModifier = () => {
         const { getProductById } = useContext(ProductContext);
         const { updateProduct } = useContext(AdminContext);
