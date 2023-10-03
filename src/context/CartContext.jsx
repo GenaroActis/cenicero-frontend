@@ -1,7 +1,7 @@
 import React, { createContext } from 'react'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { fetchUrl, frontUrl } from '../index.js';
 export const CartContext = createContext();
 
 const CartProvider = ({children}) =>{
@@ -46,7 +46,7 @@ const CartProvider = ({children}) =>{
     const getCart = async () =>{
         try { 
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:8080/api/carts`, {
+            const response = await fetch(`${fetchUrl}/api/carts`, {
                 method: 'GET',
                 headers: {
                 'Content-Type': 'application/json',
@@ -57,18 +57,18 @@ const CartProvider = ({children}) =>{
                 const data = await response.json()
                 return data.data
             } else {
-                window.location.href = 'http://localhost:3000'
+                window.location.href =  `${frontUrl}/`
                 throw new Error('Error en la solicitud');
             }
         } catch (error) {
-            console.log(error)
+            throw new Error(error)
         };
     };
 
     const addProductToCart = async (prodId) =>{
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:8080/api/carts/${prodId}`, {
+            const response = await fetch(`${fetchUrl}/api/carts/${prodId}`, {
                 method: 'PUT',
                 headers: {
                 'Content-Type': 'application/json',
@@ -79,18 +79,18 @@ const CartProvider = ({children}) =>{
                 await response.json();
                 notify1()
             } else {
-                window.location.href = 'http://localhost:3000/'
+                window.location.href = `${frontUrl}/`
                 throw new Error('Error en la solicitud');
             }
         } catch (error) {
-            console.log(error)
+            throw new Error(error)
         };
     };
 
     const deleteProductToCart = async (prodId) =>{
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:8080/api/carts/${prodId}`, {
+            const response = await fetch(`${fetchUrl}/api/carts/${prodId}`, {
                 method: 'DELETE',
                 headers: {
                 'Content-Type': 'application/json',
@@ -100,34 +100,38 @@ const CartProvider = ({children}) =>{
             if (response.ok) {
                 await response.json();
             } else {
-                window.location.href = 'http://localhost:3000/'
+                window.location.href = `${frontUrl}/`
                 throw new Error('Error en la solicitud');
             }
         } catch (error) {
-            console.log(error)
+            throw new Error(error)
         };
     };
 
     const deleteAllProductsToCart = async () =>{
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:8080/api/carts`, {
-                                                    
+            const response = await fetch(`${fetchUrl}/api/carts`, {
+                method: 'DELETE',
+                headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token,
+                },
             });
             if (response.ok) {
                 await response.json();
             } else {
-                window.location.href = 'http://localhost:3000/'
+                window.location.href = `${frontUrl}/`
                 throw new Error('Error en la solicitud');
             }
         } catch (error) {
-            console.log(error)
+            throw new Error(error)
         };
     };
 
     const updateQuantityToCart = async (quantity, prodId) =>{
         try {
-            const response = await fetch(`http://localhost:8080/api/carts/quantity/${prodId}`, {
+            const response = await fetch(`${fetchUrl}/api/carts/quantity/${prodId}`, {
                 method: 'PUT',
                 headers: {
                 'Content-Type': 'application/json',
@@ -137,11 +141,11 @@ const CartProvider = ({children}) =>{
             if (response.ok) {
                 await response.json();
             } else {
-                window.location.href = 'http://localhost:3000/'
+                window.location.href = `${frontUrl}/`
                 throw new Error('Error en la solicitud');
             }
         } catch (error) {
-            console.log(error)
+            throw new Error(error)
         };
     };
 
@@ -153,7 +157,7 @@ const CartProvider = ({children}) =>{
             }, 0);
             return totalPrice;
         } catch (error) {
-            console.log(error)
+            throw new Error(error)
         }
     };
 

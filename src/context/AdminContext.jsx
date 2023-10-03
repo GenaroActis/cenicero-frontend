@@ -1,7 +1,7 @@
 import React, { createContext } from 'react'
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-
+import { fetchUrl, frontUrl } from '../index.js';
 export const AdminContext = createContext();
 
 const AdminProvider = ({children}) =>{
@@ -30,7 +30,7 @@ const AdminProvider = ({children}) =>{
     const ensureIsAdmin = async () =>{
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:8080/api/admin/only`, {
+            const response = await fetch(`${fetchUrl}/api/admin/only`, {
                 method: 'GET',
                 headers: {
                 'Content-Type': 'application/json',
@@ -41,18 +41,18 @@ const AdminProvider = ({children}) =>{
                 const res = await response.json()
                 if(res.data === 'Authorized user') return res.data
             } else {
-                window.location.href = 'http://localhost:3000/'
+                window.location.href = `${frontUrl}/`
                 throw new Error('Unauthorized user');
             }
         } catch (error) {
-            console.log(error)
+            throw new Error(error)
         };
     };
 
     const ensureIsAdmOrPrem = async () =>{
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:8080/api/admin`, {
+            const response = await fetch(`${fetchUrl}/api/admin`, {
                 method: 'GET',
                 headers: {
                 'Content-Type': 'application/json',
@@ -64,49 +64,19 @@ const AdminProvider = ({children}) =>{
                 if(res.message === 'Success') return res.data
             } else { 
                 await response.json()
-                window.location.href = 'http://localhost:3000/'
+                window.location.href = `${frontUrl}/`
                 throw new Error('Unauthorized user');
             }
         } catch (error) {
-            console.log(error)
+            throw new Error(error)
         };
     };
-
-    // const newProduct = async (prodData) =>{
-    //     try {
-    //         console.log(prodData)
-    //         const token = localStorage.getItem('token');
-    //         const response = await fetch(`http://localhost:8080/api/products`, {
-    //             method: 'POST',
-    //             headers: {
-    //             'Content-Type': 'application/json',
-    //             'Authorization': 'Bearer ' + token,
-    //             },
-    //             body: prodData,
-    //         });
-    //         if (response.ok) {
-    //             const res = await response.json()
-    //             if (res.data === 'the user does not have permission'){
-    //                 window.location.href = 'http://localhost:3000/'
-    //             } else{
-    //                 generateNotifySuccess('Product added successfully!')
-    //                 return res.data
-    //             }
-    //         } else {
-    //             // window.location.href = 'http://localhost:3000/'
-    //             throw new Error('Error en la solicitud');
-    //         }
-    //     } catch (error) {
-    //         console.log(error)
-    //     };
-    // };
 
     
     const newProduct = async (prodData) =>{
         try {
-            console.log(prodData)
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:8080/api/products`, {
+            const response = await fetch(`${fetchUrl}/api/products`, {
                 method: 'POST',
                 headers: {
                 'Authorization': 'Bearer ' + token,
@@ -115,26 +85,25 @@ const AdminProvider = ({children}) =>{
             });
             if (response.ok) {
                 const res = await response.json()
-                console.log(res)
                 if (res.data === 'the user does not have permission'){
-                    window.location.href = 'http://localhost:3000/'
+                    window.location.href = `${frontUrl}/`
                 } else{
                     generateNotifySuccess('Product added successfully!')
                     return res.data
                 }
             } else {
-                // window.location.href = 'http://localhost:3000/'
+                window.location.href = `${frontUrl}/`
                 throw new Error('Error en la solicitud');
             }
         } catch (error) {
-            console.log(error)
+            throw new Error(error)
         };
     };
 
     const deleteProduct = async (prodId) =>{
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:8080/api/products/${prodId}`, {
+            const response = await fetch(`${fetchUrl}/api/products/${prodId}`, {
                 method: 'DELETE',
                 headers: {
                 'Content-Type': 'application/json',
@@ -151,14 +120,14 @@ const AdminProvider = ({children}) =>{
                 throw new Error('Error en la solicitud');
             }
         } catch (error) {
-            console.log(error)
+            throw new Error(error)
         };
     };
 
     const updateProduct = async (prodId, prodUpdated) =>{
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:8080/api/products/${prodId}`, {
+            const response = await fetch(`${fetchUrl}/api/products/${prodId}`, {
                 method: 'PUT',
                 headers: {
                 'Content-Type': 'application/json',
@@ -176,14 +145,14 @@ const AdminProvider = ({children}) =>{
                 throw new Error('Error en la solicitud');
             }
         } catch (error) {
-            console.log(error)
+            throw new Error(error)
         };
     };
 
     const serchProduct = async (key, value) =>{
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:8080/api/products/search/${key}/${value}`, {
+            const response = await fetch(`${fetchUrl}/api/products/search/${key}/${value}`, {
                 method: 'GET',
                 headers: {
                 'Content-Type': 'application/json',
@@ -193,18 +162,18 @@ const AdminProvider = ({children}) =>{
             if (response.ok) {
                 await response.json();
             } else {
-                window.location.href = 'http://localhost:3000/'
+                window.location.href = `${frontUrl}/`
                 throw new Error('Error en la solicitud');
             }
         } catch (error) {
-            console.log(error)
+            throw new Error(error)
         };
     };
 
     const getUsers = async (page, limit, key, value, sortField, sortOrder) =>{
         try{
             const token = localStorage.getItem('token');
-            const url = `http://localhost:8080/api/admin/users/?${page ?? 'page=1'}&${limit ?? 'limit=5'}&${key}&${value}&${sortField ?? 'sortField=title'}&${sortOrder ?? 'sortOrder=asc'}`;
+            const url = `${fetchUrl}/api/admin/users/?${page ?? 'page=1'}&${limit ?? 'limit=5'}&${key}&${value}&${sortField ?? 'sortField=title'}&${sortOrder ?? 'sortOrder=asc'}`;
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {
@@ -216,11 +185,11 @@ const AdminProvider = ({children}) =>{
                 const data = await response.json();
                 return data.data
             } else {
-                window.location.href = 'http://localhost:3000/'
+                window.location.href = `${frontUrl}/`
                 throw new Error('Error en la solicitud');
             }
         } catch (error) {
-            console.log(error)
+            throw new Error(error)
         };
     };
     
@@ -228,8 +197,8 @@ const AdminProvider = ({children}) =>{
         try {
             const token = localStorage.getItem('token');
             let url = undefined
-            if(userData.role === 'user') url = `http://localhost:8080/api/admin/toPremium/${userData._id}`
-            if(userData.role === 'premium') url = `http://localhost:8080/api/admin/toUser/${userData._id}`
+            if(userData.role === 'user') url = `${fetchUrl}/api/admin/toPremium/${userData._id}`
+            if(userData.role === 'premium') url = `${fetchUrl}/api/admin/toUser/${userData._id}`
             const response = await fetch(url, {
                 method: 'PUT',
                 headers: {
@@ -243,19 +212,19 @@ const AdminProvider = ({children}) =>{
                 return res
             } else {
                 const error = await response.json()
-                console.log(error)
+                window.location.href = `${frontUrl}/`
                 throw new Error('Error en la solicitud');
                 }
             }
         catch (error) {
-            console.log(error)
+            throw new Error(error)
         };
     };
     
     const getPurchases = async (page, limit, key, value, sortField, sortOrder) =>{
         try{
             const token = localStorage.getItem('token');
-            const url = `http://localhost:8080/api/admin/all?${page ?? 'page=1'}&${limit ?? 'limit=5'}&${key}&${value}&${sortField ?? 'sortField=title'}&${sortOrder ?? 'sortOrder=asc'}`;
+            const url = `${fetchUrl}/api/admin/all?${page ?? 'page=1'}&${limit ?? 'limit=5'}&${key}&${value}&${sortField ?? 'sortField=title'}&${sortOrder ?? 'sortOrder=asc'}`;
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {
@@ -268,11 +237,11 @@ const AdminProvider = ({children}) =>{
                 return data.data
             } else {
                 await response.json();
-                window.location.href = 'http://localhost:3000/'
+                window.location.href = `${frontUrl}/`
                 throw new Error('Error en la solicitud');
             }
         } catch (error) {
-            console.log(error)
+            throw new Error(error)
         };
     };
 

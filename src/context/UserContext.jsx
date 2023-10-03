@@ -1,7 +1,7 @@
 import React, { createContext } from 'react'
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-
+import { fetchUrl, frontUrl } from '../index.js';
 export const UserContext = createContext();
 
 const UserProvider = ({children}) =>{
@@ -32,7 +32,7 @@ const UserProvider = ({children}) =>{
 
     const register = async (userData) =>{
         try {
-            const response = await fetch(`http://localhost:8080/api/user/register`, {
+            const response = await fetch(`${fetchUrl}/api/user/register`, {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ const UserProvider = ({children}) =>{
                 body: JSON.stringify(userData),
             });
             if (response.ok) {
-                window.location.href = 'http://localhost:3000/'
+                window.location.href = `${frontUrl}/`
                 await response.json();
             } else {
                 const error = await response.json()
@@ -59,14 +59,14 @@ const UserProvider = ({children}) =>{
                 }
             }
         } catch (error) {
-            console.log(error)
+            throw new Error(error)
         };
     };
 
     const login = async (userEmail, userPassword) =>{
         try {
             const userData = {email: userEmail, password: userPassword}
-            const response = await fetch(`http://localhost:8080/api/user/login`, {
+            const response = await fetch(`${fetchUrl}/api/user/login`, {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json',
@@ -77,28 +77,28 @@ const UserProvider = ({children}) =>{
                 const res = await response.json()
                 const token = res.accessToken
                 localStorage.setItem('token', token);
-                window.location.href = 'http://localhost:3000/products'
+                window.location.href = `${frontUrl}/products`
             } else {
                 const error= await response.json()
                 if(error.errors === 'isGithub') generateNotifyError('This user was registered from github!')
                 else generateNotifyError('Wrong email or password!');
             };
         } catch (error) {
-            console.log(error)
+            throw new Error(error)
         };
     };
 
     const registerGithub = async () =>{
         try {
-            window.location.href = 'http://localhost:8080/api/user/register-github'
+            window.location.href = `${fetchUrl}/api/user/register-github`
         } catch (error) {
-            console.log(error)
+            throw new Error(error)
         };
     };
 
     const logout = async () =>{
         try {
-            const response = await fetch(`http://localhost:8080/api/user/logout`, {
+            const response = await fetch(`${fetchUrl}/api/user/logout`, {
                 method: 'GET',
                 headers: {
                 'Content-Type': 'application/json',
@@ -110,14 +110,14 @@ const UserProvider = ({children}) =>{
                 throw new Error('Error en la solicitud');
             }
         } catch (error) {
-            console.log(error)
+            throw new Error(error)
         };
     };
 
     const sendRecoverPassEmail = async (userEmail) =>{
         try {
             const userData = {email: userEmail}
-            const response = await fetch(`http://localhost:8080/api/email/recover`, {
+            const response = await fetch(`${fetchUrl}/api/email/recover`, {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json',
@@ -136,14 +136,14 @@ const UserProvider = ({children}) =>{
                 if(error.errors === 'theMailIsNotRegistered') generateNotifyError('No user was found with this email');
             };
         } catch (error) {
-            console.log(error)
+            throw new Error(error)
         };
     };
 
     const validateTokenToRecover = async () =>{
         try {
             const tokenRecover = localStorage.getItem('tokenRecoverPass');
-            const response = await fetch(`http://localhost:8080/api/user/recover`, {
+            const response = await fetch(`${fetchUrl}/api/user/recover`, {
                 method: 'GET',
                 headers: {
                 'Content-Type': 'application/json',
@@ -155,10 +155,10 @@ const UserProvider = ({children}) =>{
                 return res
             } else {
                 generateNotifyError('The time has passed to recover your password, try again!')
-                setTimeout( ()=>{window.location.href = `http://localhost:3000/`}, 2000)
+                setTimeout( ()=>{window.location.href = `${frontUrl}/`}, 2000)
             }
         } catch (error) {
-            console.log(error)
+            throw new Error(error)
         };
     };
 
@@ -169,7 +169,7 @@ const UserProvider = ({children}) =>{
                     email: email,
                     newPassword: newPassword
                 }
-                const response = await fetch(`http://localhost:8080/api/user/recover`, {
+                const response = await fetch(`${fetchUrl}/api/user/recover`, {
                     method: 'PUT',
                     headers: {
                     'Content-Type': 'application/json',
@@ -179,7 +179,7 @@ const UserProvider = ({children}) =>{
                 if (response.ok) {
                     await response.json();
                     localStorage.removeItem('tokenRecoverPass');
-                    window.location.href = 'http://localhost:3000/'
+                    window.location.href = `${frontUrl}/`
                 } else {
                     const error = await response.json()
                     if(error.errors){
@@ -198,7 +198,7 @@ const UserProvider = ({children}) =>{
                 return false
             }
         } catch (error) {
-            console.log(error)
+            throw new Error(error)
         };
     };
 

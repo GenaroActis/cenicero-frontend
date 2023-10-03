@@ -1,7 +1,7 @@
 import React, { createContext } from 'react'
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-
+import { fetchUrl, frontUrl } from '../index.js';
 export const PurchaseContext = createContext();
 
 const PurchaseProvider = ({children}) =>{
@@ -32,7 +32,7 @@ const PurchaseProvider = ({children}) =>{
     const generateTicket = async (id) =>{
         try{
             const token = localStorage.getItem('token');
-            const url = `http://localhost:8080/api/ticket/${id}`;
+            const url = `${fetchUrl}/api/ticket/${id}`;
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {
@@ -52,14 +52,14 @@ const PurchaseProvider = ({children}) =>{
                 }
             }
         } catch (error) {
-            console.log(error)
+            throw new Error(error)
         };
     };
 
     const sendEmail = async (code) =>{
         try {
             const token = localStorage.getItem('token');
-            const url = `http://localhost:8080/api/email/${code}`;
+            const url = `${fetchUrl}/api/email/${code}`;
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -71,18 +71,18 @@ const PurchaseProvider = ({children}) =>{
                 const res = await response.json();
                 return res.data
             } else {
-                window.location.href = 'http://localhost:3000/'
+                window.location.href = `${frontUrl}/`
                 throw new Error('Error en la solicitud');
             }
         } catch (error) {
-            console.log(error)
+            throw new Error(error)
         };
     };
 
     const finalizeTicket = async (ticketData) =>{
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:8080/api/ticket/finalizePurchase`, {
+            const response = await fetch(`${fetchUrl}/api/ticket/finalizePurchase`, {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json',
@@ -94,21 +94,21 @@ const PurchaseProvider = ({children}) =>{
                 const res = await response.json()
                 notifySuccessful()
                 sendEmail(res.data.code)
-                setTimeout( ()=>{window.location.href = `http://localhost:3000/confirmedPurchase/${res.data.code}`}, 2000)
+                setTimeout( ()=>{window.location.href = `${frontUrl}/confirmedPurchase/${res.data.code}`}, 2000)
             } else {
                 notifyFetchError()
-                setTimeout( ()=>{window.location.href = 'http://localhost:3000/products'}, 2000)
+                setTimeout( ()=>{window.location.href = `${frontUrl}/products`}, 2000)
                 throw new Error('Error en la solicitud');
             }
         } catch (error) {
-            console.log(error)
+            throw new Error(error)
         };
     };
 
     const getTicketByCode = async (code) =>{
         try{
             const token = localStorage.getItem('token');
-            const url = `http://localhost:8080/api/ticket/purchase/${code}`;
+            const url = `${fetchUrl}/api/ticket/purchase/${code}`;
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {
@@ -120,11 +120,11 @@ const PurchaseProvider = ({children}) =>{
                 const res = await response.json();
                 return res.data
             } else {
-                window.location.href = 'http://localhost:3000/'
+                window.location.href = `${frontUrl}/`
                 throw new Error('Error en la solicitud');
             }
         } catch (error) {
-            console.log(error)
+            throw new Error(error)
         };
     };
 
