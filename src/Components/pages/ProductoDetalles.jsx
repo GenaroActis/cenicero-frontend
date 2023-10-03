@@ -23,11 +23,11 @@ const  Producto = () => {
             setProduct(data);
             setLoading(false);
             } catch (error) {
-            console.error('Error:', error);
+            throw new Error (error);
             };
         };
         fetchData();
-    }, [getProductById]);
+    }, [id]);
 
     if (loading === true){
         return (

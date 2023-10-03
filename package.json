@@ -28,7 +28,6 @@
     "deploy": "gh-pages -d build",
     "start": "react-dotenv && react-scripts start",
     "serve": "react-dotenv && serve build",
-    "build": "react-dotenv && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

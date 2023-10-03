@@ -18,7 +18,7 @@ const Header = () => {
     <header>
         <h2 className="cenic">Cenicero.com.ar</h2>
         <div id="header">
-            <img alt='logo image' src="https://res.cloudinary.com/dsdicaf5h/image/upload/v1674159144/cenicero/Sin_t%C3%ADtulo-1_cscv6i.png" id="imgLogo" className='img-fluid'/>
+            <img alt='image' src="https://res.cloudinary.com/dsdicaf5h/image/upload/v1674159144/cenicero/Sin_t%C3%ADtulo-1_cscv6i.png" id="imgLogo" className='img-fluid'/>
             <div className="d-flex flex-wrap justify-content-center py-3 mb-4">
                 {
                     showMenu  && (
