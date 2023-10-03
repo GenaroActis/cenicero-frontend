@@ -20,12 +20,12 @@ const SalesHistory = () => {
         if(data.userData.role === 'admin') setIsAdmin(true)
         setLoading(false);
         } catch (error) {
-        console.error('Error:', error);
+        throw new Error (error)
         };
     };
     useEffect(() => {
         fetchData();
-    }, []);
+    });
 
     if (loading === true){
         return (
@@ -41,8 +41,8 @@ const SalesHistory = () => {
                 <div className="row" id="productos">
                 {cardsPurchases.map((purchase) => (
                         <div key={purchase._id} className="card text-dark mt-5">
-                            {/* <img src={product.img1} className="card-img-top mt-2 img-fluid" alt="" srcSet="" />
-                            <img src={product.img2} className="card-img img-fluid" id="img2" alt="" srcSet="" /> */}
+                            <img src={product.img} className="card-img-top mt-2 img-fluid" alt="product image" srcSet="" />
+                            <img src={product.img} className="card-img img-fluid" id="img2" alt="product image" srcSet="" />
                             <div className="card-body">
                                 <h1 className="card-title">Comprador: {purchase.purchaser.fullName}</h1>
                                 <h2>Email: {purchase.purchaser.emailBuyer}</h2>
@@ -50,7 +50,7 @@ const SalesHistory = () => {
                                 <h4>Fecha: {purchase.purchaseDataTime}</h4>
                                 <h4>Telefono: {purchase.purchaser.cellPhone}</h4>
                                 <h1 className="card-text shadow-lg p-3 mb-2 bg-white rounded">Precio: ${purchase.totalPrice}</h1>
-                                <Link key={purchase._id} className="btn btn-warning" aria-current="page" to={`/confirmedPurchase/${purchase.code}`}>
+                                <Link target="_blank" rel="noreferrer" key={purchase._id} className="btn btn-warning" aria-current="page" to={`/confirmedPurchase/${purchase.code}`}>
                                 Ver productos
                                 </Link>
                             </div>
@@ -64,18 +64,18 @@ const SalesHistory = () => {
                 <ul className="pagination">
                 {pagData.hasPrevPage && (
                     <li className="page-item">
-                        <Link className="page-link" to={pagData.prevPageLink}>
+                        <Link target="_blank" rel="noreferrer" className="page-link" to={pagData.prevPageLink}>
                             Previous
                         </Link>
                     </li>
                 )}
-                    <li id='1' className={`page-item ${pagData.actualPage === 1 ? 'active' : ''}`}><Link className="page-link" to={`/products`}>1</Link></li>
-                    <li id='2' className={`page-item ${pagData.actualPage === 2 ? 'active' : ''}`}><Link className="page-link" to={`/products/page=2`}>2</Link></li>
-                    <li id='3' className={`page-item ${pagData.actualPage === 3 ? 'active' : ''}`}><Link className="page-link" to={`/products/page=3`}>3</Link></li>
-                    <li id='4' className={`page-item ${pagData.actualPage === 4 ? 'active' : ''}`}><Link className="page-link" to={`/products/page=4`}>4</Link></li>
+                    <li id='1' className={`page-item ${pagData.actualPage === 1 ? 'active' : ''}`}><Link target="_blank" rel="noreferrer" className="page-link" to={`/products`}>1</Link></li>
+                    <li id='2' className={`page-item ${pagData.actualPage === 2 ? 'active' : ''}`}><Link target="_blank" rel="noreferrer" className="page-link" to={`/products/page=2`}>2</Link></li>
+                    <li id='3' className={`page-item ${pagData.actualPage === 3 ? 'active' : ''}`}><Link target="_blank" rel="noreferrer" className="page-link" to={`/products/page=3`}>3</Link></li>
+                    <li id='4' className={`page-item ${pagData.actualPage === 4 ? 'active' : ''}`}><Link target="_blank" rel="noreferrer" className="page-link" to={`/products/page=4`}>4</Link></li>
                 {pagData.hasNextPage && (
                     <li className="page-item">
-                        <Link className="page-link" to={pagData.nextPageLink}>
+                        <Link target="_blank" rel="noreferrer" className="page-link" to={pagData.nextPageLink}>
                             Next
                         </Link>
                     </li>

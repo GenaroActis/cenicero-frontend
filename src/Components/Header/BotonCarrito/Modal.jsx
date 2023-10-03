@@ -59,7 +59,7 @@ function ModalCart(children) {
     return (
         <>
             <Button id="buttonC" variant="primary" onClick={handleShow}>
-                <img src="https://res.cloudinary.com/dsdicaf5h/image/upload/v1677255374/cenicero/carrito-de-compras_1_nkqp6z.png" className="imgBoton"/>
+                <img alt='trash' src="https://res.cloudinary.com/dsdicaf5h/image/upload/v1677255374/cenicero/carrito-de-compras_1_nkqp6z.png" className="imgBoton"/>
             </Button>
             
             <Modal id="modal" className='text-center' show={show} onHide={handleClose} animation={false}>
@@ -79,7 +79,6 @@ function ModalCart(children) {
                     ) : (
                         cartProducts.products.map(product=>
                             <div key={product._id._id} className='card shadow-lg text-dark mt-5'>
-                            {/* <img src={product.img1} className='card-img-top mt-2 img-fluid' alt="" srcSet="" /> */}
                             <div className='card-body'>
                                 <h1 className='card-title'>{product._id.title}</h1>
                                 <h2>Talle {product._id.size}</h2>
@@ -117,7 +116,7 @@ function ModalCart(children) {
                 <Button variant="danger" onClick={handleCleanCart}>
                     vaciar carrito
                 </Button>
-                <Link onClick={handleClose} className="nav-link" aria-current="page" to={`/finalizePurchase/${cartProducts._id}`}>
+                <Link target="_blank" rel="noreferrer" onClick={handleClose} className="nav-link" aria-current="page" to={`/finalizePurchase/${cartProducts._id}`}>
                     <Button variant="primary">
                         Comprar
                     </Button>

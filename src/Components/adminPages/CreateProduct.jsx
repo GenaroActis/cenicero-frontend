@@ -6,7 +6,6 @@ const CreateProduct = () => {
     const { newProduct } = useContext(AdminContext)
     const handleSubmitNewProduct = (event) =>{
         event.preventDefault()
-        
         const prodData ={
             title: document.querySelector('#title').value,
             description: document.querySelector('#description').value,
@@ -19,15 +18,12 @@ const CreateProduct = () => {
         formData.append('prodData', JSON.stringify(prodData))
         const inputImg = document.querySelector('#img')
         formData.append('img', inputImg.files[0]);
-        console.log(JSON.stringify(formData))
         newProduct(formData)
-        // const form = document.querySelector('#form')
-        // form.reset();
     }
     return (
         <>
         <div className="d-flex justify-content-center m-4 p-4">
-            <Link className="nav-link btn btn-primary p-4 text-white fs-4" aria-current="page" to={'/admin'}>Admin Menu</Link>
+            <Link target="_blank" rel="noreferrer" className="nav-link btn btn-primary p-4 text-white fs-4" aria-current="page" to={'/admin'}>Admin Menu</Link>
         </div>
         <div className="card userCard m-5 text-white">
             <div className="card-body text-center">

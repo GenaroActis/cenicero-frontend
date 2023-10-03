@@ -24,7 +24,7 @@ const RecoverPassword = () => {
     return (
         <>
         <div className="d-flex justify-content-center p-4">
-        <Link className="nav-link btn btn-primary p-2 text-white fs-4" aria-current="page" to={'/register'}>Register</Link>
+        <Link target="_blank" rel="noreferrer" className="nav-link btn btn-primary p-2 text-white fs-4" aria-current="page" to={'/register'}>Register</Link>
         </div>
             <div className="container text-white py-5 h-100">
                 <div className="row justify-content-center align-items-center h-100">

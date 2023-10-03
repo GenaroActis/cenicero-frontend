@@ -62,36 +62,36 @@ const ProductModifier = () => {
         return (
             <>
             <div className="d-flex justify-content-center m-4 p-4">
-                <Link className="nav-link btn btn-primary p-4 text-white fs-4" aria-current="page" to={'/admin'}>Admin Menu</Link>
+                <Link target="_blank" rel="noreferrer" className="nav-link btn btn-primary p-4 text-white fs-4" aria-current="page" to={'/admin'}>Admin Menu</Link>
             </div>
             <div key={id} id='detalleProducto'>
                 <>
                     <React.Fragment key={product.id}>
-                        {/* <div id='carousel'>
+                        <div id='carousel'>
                             <Carousel variant="dark rounded">
                                 <Carousel.Item>
                                     <img
                                     className="d-block w-100 img-fluid rounded"
-                                    src={product.img1}
+                                    src={product.img}
                                     alt="First slide"
                                     />
                                 </Carousel.Item>
                                 <Carousel.Item>
                                     <img
                                     className="d-block w-100 rounded"
-                                    src={product.img2}
+                                    src={product.img}
                                     alt="Second slide"
                                     />
                                 </Carousel.Item>
                                 <Carousel.Item>
                                     <img
                                     className="d-block w-100 rounded"
-                                    src={product.img3}
+                                    src={product.img}
                                     alt="Third slide"
                                     />
                                 </Carousel.Item>
                             </Carousel>
-                        </div> */}
+                        </div>
                         <div id='cardDetalles'>
                             <Card>
                                 <Card.Body className='text-center'>

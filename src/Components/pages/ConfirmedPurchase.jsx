@@ -21,7 +21,7 @@ const ConfirmedPurchase = () => {
             }
         };
         getTicket();
-    }, []);
+    });
 
     if (loading === true){
         return (
@@ -73,7 +73,7 @@ const ConfirmedPurchase = () => {
                         </table>
                         <div className="d-flex justify-content-center">
                             <div className="p-2">
-                                <Link className="btn btn-primary btn-block" aria-current="page" to={'/products'}>Keep buying</Link>
+                                <Link target="_blank" rel="noreferrer" className="btn btn-primary btn-block" aria-current="page" to={'/products'}>Keep buying</Link>
                             </div>
                         </div>
                         </div>

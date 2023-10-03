@@ -61,7 +61,7 @@ const ProductManager = () => {
             return (
             <>
                 <div className="d-flex justify-content-center m-2 p-4">
-                    <Link className="nav-link btn btn-primary p-4 text-white fs-4" aria-current="page" to={'/admin'}>Admin Menu</Link>
+                    <Link target="_blank" rel="noreferrer" className="nav-link btn btn-primary p-4 text-white fs-4" aria-current="page" to={'/admin'}>Admin Menu</Link>
                 </div>
             <Modal id="modal" className='text-center' show={show} onHide={handleClose} animation={false}>
                 <Modal.Header closeButton>
@@ -90,10 +90,10 @@ const ProductManager = () => {
                         {cardsProducts.map((product) => (
                             <React.Fragment key={product._id}>
                             <div>
-                                <Link className="nav-link" aria-current="page" to={`/productModifier/${product._id}`}>
+                                <Link target="_blank" rel="noreferrer" className="nav-link" aria-current="page" to={`/productModifier/${product._id}`}>
                                     <div className="card text-dark mt-2">
-                                        {/* <img src={product.img1} className="card-img-top mt-2 img-fluid" alt="" srcSet="" />
-                                        <img src={product.img2} className="card-img img-fluid" id="img2" alt="" srcSet="" /> */}
+                                        <img src={product.img} className="card-img-top mt-2 img-fluid" alt="product image" srcSet="" />
+                                        <img src={product.img} className="card-img img-fluid" id="img2" alt="product image" srcSet="" />
                                         <div className="card-body">
                                             <h1 className="card-title">{product.title}</h1>
                                             <h2>Talle {product.size}</h2>
@@ -105,7 +105,7 @@ const ProductManager = () => {
                                     </div>
                                 </Link>
                                 <button onClick={()=> handleShow( product._id, product.title )} className='trashButton btn btn-link'>
-                                    <img className='trashImg' src="https://res.cloudinary.com/dsdicaf5h/image/upload/v1690465202/cenicero/trash-bin_iljdwu.png" alt="" />
+                                    <img className='trashImg' src="https://res.cloudinary.com/dsdicaf5h/image/upload/v1690465202/cenicero/trash-bin_iljdwu.png" alt="trash" />
                                 </button>
                             </div>
                             </React.Fragment>
@@ -116,10 +116,10 @@ const ProductManager = () => {
                 <div className="d-flex justify-content-center m-5">
                     <nav aria-label="Page navigation example">
                         <ul className="pagination">
-                            <li id='1' className={`page-item ${pagData.actualPage === 1 ? 'active' : ''}`}><Link className="page-link" to={`/admin/productManager`}>1</Link></li>
-                            <li id='2' className={`page-item ${pagData.actualPage === 2 ? 'active' : ''}`}><Link className="page-link" to={`/admin/productManager/page=2`}>2</Link></li>
-                            <li id='3' className={`page-item ${pagData.actualPage === 3 ? 'active' : ''}`}><Link className="page-link" to={`/admin/productManager/page=3`}>3</Link></li>
-                            <li id='4' className={`page-item ${pagData.actualPage === 4 ? 'active' : ''}`}><Link className="page-link" to={`/admin/productManager/page=4`}>4</Link></li>
+                            <li id='1' className={`page-item ${pagData.actualPage === 1 ? 'active' : ''}`}><Link target="_blank" rel="noreferrer" className="page-link" to={`/admin/productManager`}>1</Link></li>
+                            <li id='2' className={`page-item ${pagData.actualPage === 2 ? 'active' : ''}`}><Link target="_blank" rel="noreferrer" className="page-link" to={`/admin/productManager/page=2`}>2</Link></li>
+                            <li id='3' className={`page-item ${pagData.actualPage === 3 ? 'active' : ''}`}><Link target="_blank" rel="noreferrer" className="page-link" to={`/admin/productManager/page=3`}>3</Link></li>
+                            <li id='4' className={`page-item ${pagData.actualPage === 4 ? 'active' : ''}`}><Link target="_blank" rel="noreferrer" className="page-link" to={`/admin/productManager/page=4`}>4</Link></li>
                         </ul>
                     </nav>
                 </div>

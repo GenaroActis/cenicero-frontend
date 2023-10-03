@@ -22,12 +22,12 @@ const Users = () => {
         if(data.userData.role === 'admin') setIsAdmin(true)
         setLoading(false);
         } catch (error) {
-        console.error('Error:', error);
+        throw new Error (error)
         };
     };
     useEffect(() => {
         fetchData();
-    }, []);
+    });
     const handleChange = async (user) =>{
         const res = await changeRole(user)
         if(res.message === 'Success') fetchData()
@@ -47,8 +47,6 @@ const Users = () => {
                 <div className="row" id="productos">
                 {cardsUsers.map((user) => (
                         <div key={user._id} className="card text-dark mt-5">
-                            {/* <img src={product.img1} className="card-img-top mt-2 img-fluid" alt="" srcSet="" />
-                            <img src={product.img2} className="card-img img-fluid" id="img2" alt="" srcSet="" /> */}
                             <div className="card-body">
                                 <h1 className="card-title">Nombre: {user.firstName}</h1>
                                 <h2>Apellido: {user.lastName}</h2>
@@ -75,18 +73,18 @@ const Users = () => {
                 <ul className="pagination">
                 {pagData.hasPrevPage && (
                     <li className="page-item">
-                        <Link className="page-link" to={pagData.prevPageLink}>
+                        <Link target="_blank" rel="noreferrer" className="page-link" to={pagData.prevPageLink}>
                             Previous
                         </Link>
                     </li>
                 )}
-                    <li id='1' className={`page-item ${pagData.actualPage === 1 ? 'active' : ''}`}><Link className="page-link" to={`/products`}>1</Link></li>
-                    <li id='2' className={`page-item ${pagData.actualPage === 2 ? 'active' : ''}`}><Link className="page-link" to={`/products/page=2`}>2</Link></li>
-                    <li id='3' className={`page-item ${pagData.actualPage === 3 ? 'active' : ''}`}><Link className="page-link" to={`/products/page=3`}>3</Link></li>
-                    <li id='4' className={`page-item ${pagData.actualPage === 4 ? 'active' : ''}`}><Link className="page-link" to={`/products/page=4`}>4</Link></li>
+                    <li id='1' className={`page-item ${pagData.actualPage === 1 ? 'active' : ''}`}><Link target="_blank" rel="noreferrer" className="page-link" to={`/products`}>1</Link></li>
+                    <li id='2' className={`page-item ${pagData.actualPage === 2 ? 'active' : ''}`}><Link target="_blank" rel="noreferrer" className="page-link" to={`/products/page=2`}>2</Link></li>
+                    <li id='3' className={`page-item ${pagData.actualPage === 3 ? 'active' : ''}`}><Link target="_blank" rel="noreferrer" className="page-link" to={`/products/page=3`}>3</Link></li>
+                    <li id='4' className={`page-item ${pagData.actualPage === 4 ? 'active' : ''}`}><Link target="_blank" rel="noreferrer" className="page-link" to={`/products/page=4`}>4</Link></li>
                 {pagData.hasNextPage && (
                     <li className="page-item">
-                        <Link className="page-link" to={pagData.nextPageLink}>
+                        <Link target="_blank" rel="noreferrer" className="page-link" to={pagData.nextPageLink}>
                             Next
                         </Link>
                     </li>

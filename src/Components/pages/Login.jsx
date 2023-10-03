@@ -28,7 +28,7 @@ const Login = () => {
     return (
     <>  
     <div className="d-flex justify-content-center p-4">
-        <Link className="nav-link btn btn-primary p-2 text-white fs-4" aria-current="page" to={'/register'}>Register</Link>
+        <Link target="_blank" rel="noreferrer" className="nav-link btn btn-primary p-2 text-white fs-4" aria-current="page" to={'/register'}>Register</Link>
     </div>
     <div className="d-flex justify-content-center p-4">
         <button onClick={handleSubmitGithub} className="btn btn-success">

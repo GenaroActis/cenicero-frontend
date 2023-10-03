@@ -36,7 +36,7 @@ const Inicio = () => {
 
     return (
         <>
-        <Link className="nav-link" aria-current="page" to={'/products'}>
+        <Link target="_blank" rel="noreferrer" className="nav-link" aria-current="page" to={'/products'}>
             <div className='divTodos'>
                 <div className='TodosProd'>
                     <span>Productos Destacados&nbsp;&nbsp;&nbsp;</span>

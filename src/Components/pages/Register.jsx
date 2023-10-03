@@ -6,7 +6,6 @@ const Register = () => {
     const { register } = useContext(UserContext)
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Lógica para enviar los datos del formulario al servidor
         const userData = {
             firstName: document.querySelector('#firstName').value,
             lastName: document.querySelector('#lastName').value,
@@ -20,7 +19,7 @@ const Register = () => {
         <>  
             <div>
             <div className="d-flex justify-content-center p-4">
-                <Link className="nav-link btn btn-primary p-2 text-white fs-4" aria-current="page" to={'/'}>Login</Link>
+                <Link target="_blank" rel="noreferrer" className="nav-link btn btn-primary p-2 text-white fs-4" aria-current="page" to={'/'}>Login</Link>
             </div>  
                 <div className="container text-white py-5 h-100">
                     <div className="row justify-content-center align-items-center h-100">
