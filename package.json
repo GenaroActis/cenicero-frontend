@@ -29,7 +29,8 @@
     "start": "react-dotenv && react-scripts start",
     "serve": "react-dotenv && serve build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build": "react-scripts build"
   },
   "eslintConfig": {
     "extends": [
