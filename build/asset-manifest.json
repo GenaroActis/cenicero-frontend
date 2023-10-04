@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/cenicero-frontend/static/css/main.84bd6787.css",
+    "main.js": "/cenicero-frontend/static/js/main.35773da7.js",
+    "index.html": "/cenicero-frontend/index.html",
+    "main.84bd6787.css.map": "/cenicero-frontend/static/css/main.84bd6787.css.map",
+    "main.35773da7.js.map": "/cenicero-frontend/static/js/main.35773da7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.84bd6787.css",
+    "static/js/main.35773da7.js"
+  ]
+}
