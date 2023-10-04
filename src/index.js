@@ -15,8 +15,8 @@ root.render(
   </>
 );
 
-export const fetchUrl = process.env.REACT_APP_FetchUrl
-export const frontUrl = process.env.REACT_APP_FrontUrl
+export const fetchUrl = 'http://localhost:8080'
+export const frontUrl = 'http://localhost:3000'
 console.log('fetch', fetchUrl)
 console.log('font', frontUrl)
 // If you want to start measuring performance in your app, pass a function
