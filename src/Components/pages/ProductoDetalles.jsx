@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ProductContext } from '../../context/ProductContext';
 import { CartContext } from '../../context/CartContext';
 import Spinner from 'react-bootstrap/Spinner';
-
+import { fetchUrl } from '../../index.js';
 
 
 const  Producto = () => {
@@ -47,21 +47,21 @@ const  Producto = () => {
                             <Carousel.Item>
                                 <img
                                 className="d-block w-100 img-fluid rounded"
-                                src={"http://localhost:8080/"+product.img}
+                                src={fetchUrl+product.img}
                                 alt="First slide"
                                 />
                             </Carousel.Item>
                             <Carousel.Item>
                                 <img
                                 className="d-block w-100 rounded"
-                                src={"http://localhost:8080/"+product.img}
+                                src={fetchUrl+product.img}
                                 alt="Second slide"
                                 />
                             </Carousel.Item>
                             <Carousel.Item>
                                 <img
                                 className="d-block w-100 rounded"
-                                src={"http://localhost:8080/"+product.img}
+                                src={fetchUrl+product.img}
                                 alt="Third slide"
                                 />
                             </Carousel.Item>

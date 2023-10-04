@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Spinner from 'react-bootstrap/Spinner';
 import { ToastContainer} from 'react-toastify';
 import { ProductContext } from '../../context/ProductContext'
+import { fetchUrl } from '../../index.js';
 
 const Products = () => {
     const { getProducts } = useContext(ProductContext)
@@ -50,8 +51,8 @@ const Products = () => {
                 {cardsProducts.map((product) => (
                     <Link target="_blank" rel="noreferrer" key={product._id} className="nav-link" aria-current="page" to={`/producto/${product._id}`}>
                         <div className="card text-dark mt-5">
-                            <img src= {"http://localhost:8080/"+product.img} className="card-img-top mt-2 img-fluid" alt="product image" srcSet="" />
-                            <img src={product.img} className="card-img img-fluid" id="img2" alt="" srcSet="" />
+                            <img src= {fetchUrl + product.img} className="card-img-top mt-2 img-fluid" alt="product image" srcSet="" />
+                            <img src={fetchUrl + product.img} className="card-img img-fluid" id="img2" alt="" srcSet="" />
                             <div className="card-body">
                                 <h1 className="card-title">{product.title}</h1>
                                 <h2>Talle {product.size}</h2>

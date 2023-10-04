@@ -8,6 +8,7 @@ import { ToastContainer} from 'react-toastify';
 import { AdminContext } from '../../context/AdminContext.jsx';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { fetchUrl } from '../../index.js';
 
 const ProductManager = () => {
     const { getProducts } = useContext(ProductContext)
@@ -92,8 +93,8 @@ const ProductManager = () => {
                             <div>
                                 <Link target="_blank" rel="noreferrer" className="nav-link" aria-current="page" to={`/productModifier/${product._id}`}>
                                     <div className="card text-dark mt-2">
-                                        <img src={product.img} className="card-img-top mt-2 img-fluid" alt="product image" srcSet="" />
-                                        <img src={product.img} className="card-img img-fluid" id="img2" alt="product image" srcSet="" />
+                                        <img src={fetchUrl + product.img} className="card-img-top mt-2 img-fluid" alt="product image" srcSet="" />
+                                        <img src={fetchUrl + product.img} className="card-img img-fluid" id="img2" alt="product image" srcSet="" />
                                         <div className="card-body">
                                             <h1 className="card-title">{product.title}</h1>
                                             <h2>Talle {product.size}</h2>
