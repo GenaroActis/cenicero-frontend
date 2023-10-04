@@ -15,8 +15,8 @@ root.render(
   </>
 );
 
-export const fetchUrl = 'http://localhost:8080'
-export const frontUrl = 'http://localhost:3000'
+export const fetchUrl = 'https://cenicero.up.railway.app'
+export const frontUrl = 'https://genaroactis.github.io/cenicero-frontend'
 console.log('fetch', fetchUrl)
 console.log('font', frontUrl)
 // If you want to start measuring performance in your app, pass a function
