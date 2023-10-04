@@ -92,8 +92,8 @@ const ProductManager = () => {
                             <div>
                                 <Link target="_blank" rel="noreferrer" className="nav-link" aria-current="page" to={`/productModifier/${product._id}`}>
                                     <div className="card text-dark mt-2">
-                                        <img src={product.img} className="card-img-top mt-2 img-fluid" alt="product image" />
-                                        <img src={product.img} className="card-img img-fluid" id="img2" alt="product image" />
+                                        <img src={product.img} className="card-img-top mt-2 img-fluid" alt="product image" srcSet="" />
+                                        <img src={product.img} className="card-img img-fluid" id="img2" alt="product image" srcSet="" />
                                         <div className="card-body">
                                             <h1 className="card-title">{product.title}</h1>
                                             <h2>Talle {product.size}</h2>
